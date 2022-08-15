@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 public class Snake {
 
-    // Object Parameters
     private int bodyParts = 6;
     private char direction = 'R';
     private int applesEaten = 0;
@@ -43,7 +42,5 @@ public class Snake {
         bodyParts++;
         applesEaten++;
     }
-
-
 
 }
