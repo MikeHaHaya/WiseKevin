@@ -2,7 +2,6 @@ package app.core.entities;
 
 import static app.core.Globals.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
