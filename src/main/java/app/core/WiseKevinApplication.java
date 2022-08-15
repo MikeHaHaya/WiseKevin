@@ -1,6 +1,6 @@
 package app.core;
 
-import static app.core.Globals.*;
+import static app.core.statics.Globals.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -1,6 +1,6 @@
 package app.core.entities;
 
-import static app.core.Globals.*;
+import static app.core.statics.Globals.*;
 import lombok.Getter;
 import lombok.Setter;
 

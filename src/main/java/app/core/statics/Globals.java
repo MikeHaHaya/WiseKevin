@@ -1,4 +1,4 @@
-package app.core;
+package app.core.statics;
 
 import lombok.Getter;
 
