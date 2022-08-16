@@ -12,7 +12,7 @@ public class WiseKevinApplication {
     public static void main(String[] args) {
         SpringApplication.run(WiseKevinApplication.class, args);
 
-        new GameFrame();
+        new GameFrame(); // TODO -- Check exceptions and maybe try launching GameFrame as an entity
     }
 
 }
