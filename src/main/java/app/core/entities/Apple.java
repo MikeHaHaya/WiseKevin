@@ -4,12 +4,15 @@ import static app.core.statics.Globals.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.*;
+
 @Getter
 @Setter
 public class Apple {
 
     private int posX;
     private int posY;
+    private Color color = Color.RED;
 
     public Apple() {
         ranPositions();

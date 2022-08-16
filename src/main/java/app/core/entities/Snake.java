@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.awt.*;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -13,6 +15,7 @@ public class Snake {
     private int bodyParts = 6;
     private char direction = 'R';
     private int applesEaten = 0;
+    private Color color = Color.GREEN;
     private final int[] x = new int[GAME_UNITS];
     private final int[] y = new int[GAME_UNITS];
 
