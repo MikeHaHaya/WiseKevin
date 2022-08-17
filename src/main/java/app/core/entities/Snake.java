@@ -15,7 +15,7 @@ public class Snake {
     private int bodyParts = 6;
     private char direction = 'R';
     private int applesEaten = 0;
-    private Color color = Color.GREEN;
+    private Color color = Color.GREEN; // TODO -- Consider painting the snake in the Class itself
     private final int[] x = new int[GAME_UNITS];
     private final int[] y = new int[GAME_UNITS];
 
