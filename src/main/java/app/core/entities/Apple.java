@@ -10,6 +10,7 @@ import java.awt.*;
 @Setter
 public class Apple {
 
+    // TODO -- Check Apple class has all it's properties in the class itself
     private int posX;
     private int posY;
     private Color color = Color.RED;
