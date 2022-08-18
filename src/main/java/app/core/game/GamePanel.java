@@ -63,9 +63,35 @@ public class GamePanel extends JPanel implements ActionListener {
                 graphics.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE);
             }
 
+            // Apples
             Apple apple = new Apple();
             graphics.setColor(apple.getColor());
             graphics.fillOval(apple.getPosX(), apple.getPosY(), UNIT_SIZE, UNIT_SIZE);
+
+
+            // Snake
+            for (int i = 0; i < snake.getBodyParts(); i++) {
+                if (i == 0) {
+                    // The snake's head.
+                    graphics.setColor(snake.getColor());
+                    graphics.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
+                } else {
+                    // The snake's body.
+                    graphics.setColor(new Color(45, 180, 0));
+                    // Random snake colors
+                    graphics.setColor
+                            (new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+                    graphics.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
+                }
+
+                // Score
+                graphics.setColor(Color.RED);
+                graphics.setFont(new Font("Ink Free", Font.BOLD, 40));
+                FontMetrics metrics = getFontMetrics(graphics.getFont());
+//                graphics.drawString("Score: " + applesEaten,
+//                        (SCREEN_WIDTH - metrics.stringWidth("Score: " + applesEaten)) / 2, graphics.getFont().getSize());
+            }
+
         }
     }
 
