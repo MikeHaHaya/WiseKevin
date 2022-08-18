@@ -181,7 +181,23 @@ public class GamePanel extends JPanel implements ActionListener {
      * Draws 'Game Over' on the screen when it's game over.
      */
     public void gameOver(Graphics graphics) {
-        // TODO -- Fill out body
+        
+        // TODO -- Implement the scoreboard here 
+        
+        // 'Score' text
+        graphics.setColor(Color.RED);
+        graphics.setFont(new Font("Ink Free", Font.BOLD, 40));
+        FontMetrics metrics1 = getFontMetrics(graphics.getFont());
+        graphics.drawString("Score: " + applesEaten,
+                (SCREEN_WIDTH - metrics1.stringWidth("Score: " + applesEaten)) / 2, graphics.getFont().getSize());
+
+        // 'Game Over' text
+        graphics.setColor(Color.RED);
+        graphics.setFont(new Font("Ink Free", Font.BOLD, 75));
+        FontMetrics metrics2 = getFontMetrics(graphics.getFont());
+        graphics.drawString("Game Over",
+                (SCREEN_WIDTH - metrics2.stringWidth("Game Over")) / 2, SCREEN_HEIGHT / 2);
+        
     }
 
     /**
@@ -206,7 +222,30 @@ public class GamePanel extends JPanel implements ActionListener {
     public class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent event) {
-            // TODO -- Fill out body
+            
+            // Sets the direction the snake will go when a button is pressed
+            switch (event.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                    if (snake.getDirection() != 'R') {
+                        snake.setDirection('L');
+                    }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if (snake.getDirection() != 'L') {
+                        snake.setDirection('R');
+                    }
+                    break;
+                case KeyEvent.VK_UP:
+                    if (snake.getDirection() != 'D') {
+                        snake.setDirection('U');
+                    }
+                    break;
+                case KeyEvent.VK_DOWN:
+                    if (snake.getDirection() != 'U') {
+                        snake.setDirection('D');
+                    }
+                    break;
+            }
         }
     }
 }
