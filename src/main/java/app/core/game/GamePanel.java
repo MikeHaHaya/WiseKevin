@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * Optional grid, apples, snake
      */
     public void draw(Graphics graphics) {
-        // TODO -- Fill out body
+
         if (running) {
 
             // Grid
@@ -66,8 +66,7 @@ public class GamePanel extends JPanel implements ActionListener {
             }
 
             // Apples
-            Apple apple = new Apple();
-            apples.add(apple);
+            Apple apple = apples.get(apples.size() - 1);
             graphics.setColor(apple.getColor());
             graphics.fillOval(apple.getPosX(), apple.getPosY(), UNIT_SIZE, UNIT_SIZE);
 
@@ -77,14 +76,14 @@ public class GamePanel extends JPanel implements ActionListener {
                 if (i == 0) {
                     // The snake's head.
                     graphics.setColor(snake.getColor());
-                    graphics.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
+                    graphics.fillRect(snake.getPosX()[i], snake.getPosY()[i], UNIT_SIZE, UNIT_SIZE);
                 } else {
                     // The snake's body.
                     graphics.setColor(new Color(45, 180, 0));
                     // Random snake colors
                     graphics.setColor
                             (new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
-                    graphics.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
+                    graphics.fillRect(snake.getPosX()[i], snake.getPosY()[i], UNIT_SIZE, UNIT_SIZE);
                 }
 
             }
@@ -105,14 +104,14 @@ public class GamePanel extends JPanel implements ActionListener {
      * Creates new random apples.
      */
     public void newApple() {
-        // TODO -- Fill out body
+        apples.add(new Apple());
     }
 
     /**
      * Moves the snake.
      */
     public void move() {
-        // TODO -- Fill out body
+        snake.move();
     }
 
     /**
@@ -121,14 +120,61 @@ public class GamePanel extends JPanel implements ActionListener {
      * adds another apple eaten.
      */
     public void checkApple() {
-        // TODO -- Fill out body
+
+        Apple apple = apples.get(apples.size() - 1);
+
+        // If the head of the snake is in the same location as the apple (has eaten the apple).
+        if (snake.getPosX()[0] == apple.getPosX() && snake.getPosY()[0] == apple.getPosY()) {
+            snake.addOneBodyPart();
+            applesEaten++;
+            newApple();
+        }
     }
 
     /**
      * Checks to see any collisions with the walls or itself.
      */
     public void checkCollisions() {
-        // TODO -- Fill out body
+
+        /** TODO -- Fix fast button mash causing game over
+         * Maybe create a delay that makes the method move in the game's speed. */
+
+        int bodyParts = snake.getBodyParts();
+        int[] x = snake.getPosX();
+        int[] y = snake.getPosY();
+
+        // Checks if head collides with body.
+        for (int i = bodyParts; i > 0; i--) {
+            if ((x[0] == x[i]) && (y[0] == y[i])) {
+                running = false;
+                break;
+            }
+        }
+
+        // Checks if head touches left border.
+        if (x[0] < 0) {
+            running = false;
+        }
+
+        // Checks if head touches right border.
+        if (x[0] > SCREEN_WIDTH) {
+            running = false;
+        }
+
+        // Checks if head touches up border.
+        if (y[0] < 0) {
+            running = false;
+        }
+
+        // Checks if head touches bottom border.
+        if (y[0] > SCREEN_WIDTH) {
+            running = false;
+        }
+
+        // Stops the timer when the game is over.
+        if (!running) {
+            timer.stop();
+        }
     }
 
     /**

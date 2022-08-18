@@ -16,8 +16,8 @@ public class Snake {
     private char direction = 'R';
     private int applesEaten = 0;
     private Color color = Color.GREEN; // TODO -- Consider painting the snake in the Class itself
-    private final int[] x = new int[GAME_UNITS];
-    private final int[] y = new int[GAME_UNITS];
+    private final int[] posX = new int[GAME_UNITS];
+    private final int[] posY = new int[GAME_UNITS];
 
     /**
      * Moves the snake.
@@ -25,17 +25,24 @@ public class Snake {
     public void move() {
 
         for (int i = bodyParts; i > 0; i--) {
-            x[i] = x[i - 1];
-            y[i] = y[i - 1];
+            posX[i] = posX[i - 1];
+            posY[i] = posY[i - 1];
         }
 
         switch (direction) {
-            case 'U' -> y[0] = y[0] - UNIT_SIZE;
-            case 'D' -> y[0] = y[0] + UNIT_SIZE;
-            case 'L' -> x[0] = x[0] - UNIT_SIZE;
-            case 'R' -> x[0] = x[0] + UNIT_SIZE;
+            case 'U' -> posY[0] = posY[0] - UNIT_SIZE;
+            case 'D' -> posY[0] = posY[0] + UNIT_SIZE;
+            case 'L' -> posX[0] = posX[0] - UNIT_SIZE;
+            case 'R' -> posX[0] = posX[0] + UNIT_SIZE;
         }
 
+    }
+
+    /**
+     * Adds another body part to the snake.
+     * */
+    public void addOneBodyPart() {
+        this.bodyParts++;
     }
 
     /**
