@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private static final int DELAY = 75;
     private boolean running = false;
     private Snake snake;
-    private ArrayList<Apple> apples;
+    private ArrayList<Apple> apples = new ArrayList<>();
     private Timer timer;
     private int applesEaten;
     // TODO -- Implement scoreboard
