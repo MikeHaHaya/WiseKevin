@@ -8,14 +8,16 @@ import static app.core.statics.Globals.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements ActionListener {
 
     private static final int DELAY = 75;
     private boolean running = false;
     private Snake snake;
-    private Apple apple;
+    private ArrayList<Apple> apples;
     private Timer timer;
+    private int applesEaten;
     // TODO -- Implement scoreboard
 
 
@@ -65,6 +67,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
             // Apples
             Apple apple = new Apple();
+            apples.add(apple);
             graphics.setColor(apple.getColor());
             graphics.fillOval(apple.getPosX(), apple.getPosY(), UNIT_SIZE, UNIT_SIZE);
 
@@ -84,14 +87,17 @@ public class GamePanel extends JPanel implements ActionListener {
                     graphics.fillRect(snake.getX()[i], snake.getY()[i], UNIT_SIZE, UNIT_SIZE);
                 }
 
-                // Score
-                graphics.setColor(Color.RED);
-                graphics.setFont(new Font("Ink Free", Font.BOLD, 40));
-                FontMetrics metrics = getFontMetrics(graphics.getFont());
-//                graphics.drawString("Score: " + applesEaten,
-//                        (SCREEN_WIDTH - metrics.stringWidth("Score: " + applesEaten)) / 2, graphics.getFont().getSize());
             }
 
+            // Score
+            graphics.setColor(Color.RED);
+            graphics.setFont(new Font("Ink Free", Font.BOLD, 40));
+            FontMetrics metrics = getFontMetrics(graphics.getFont());
+            graphics.drawString("Score: " + applesEaten,
+                    (SCREEN_WIDTH - metrics.stringWidth("Score: " + applesEaten)) / 2, graphics.getFont().getSize());
+
+        } else {
+            gameOver(graphics);
         }
     }
 
