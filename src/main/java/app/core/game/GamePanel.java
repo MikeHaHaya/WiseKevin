@@ -37,6 +37,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * apples, 'running' boolean, and a timer.
      */
     public void startGame() {
+        snake = new Snake();
         newApple();
         running = true;
         timer = new Timer(DELAY, this);
