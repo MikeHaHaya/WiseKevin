@@ -10,10 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WiseKevinApplication {
 
     public static void main(String[] args) {
-//        SpringApplication.run(WiseKevinApplication.class, args);
 
         new GameFrame(); // TODO -- Check exceptions (Headless Exception) and maybe try launching GameFrame as an entity
-        // TODO -- Decide whether you use Vanilla Java or Springboot Java
 
     }
 
